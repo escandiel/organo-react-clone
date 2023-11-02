@@ -5,43 +5,43 @@ import Rodape from "./componentes/Rodape";
 import Time from "./componentes/Time";
 
 function App() {
-  const times = [
+  const [times, setTimes] = useState([
     {
       nome: "Programação",
-      corPrimaria: "#D9F7E9",
-      corSecundaria: "#57C278",
+      // corPrimaria: "#D9F7E9",
+      cor: "#57C278",
     },
     {
       nome: "Front-End",
-      corPrimaria: "#E8F8FF",
-      corSecundaria: "#82CFFA",
+      // corPrimaria: "#E8F8FF",
+      cor: "#82CFFA",
     },
     {
       nome: "Data Science",
-      corPrimaria: "#F0F8E2",
-      corSecundaria: "#A6D157",
+      // corPrimaria: "#F0F8E2",
+      cor: "#A6D157",
     },
     {
       nome: "Devops",
-      corPrimaria: "#FDE7E8",
-      corSecundaria: "#E06B69",
+      // corPrimaria: "#FDE7E8",
+      cor: "#E06B69",
     },
     {
       nome: "UX e Design",
-      corPrimaria: "#FAE9F5",
-      corSecundaria: "#DB6EBF",
+      // corPrimaria: "#FAE9F5",
+      cor: "#DB6EBF",
     },
     {
       nome: "Mobile",
-      corPrimaria: "#FFF5D9",
-      corSecundaria: "#FFBA05",
+      // corPrimaria: "#FFF5D9",
+      cor: "#FFBA05",
     },
     {
       nome: "Inovação e Gestão",
-      corPrimaria: "#FFEEDF",
-      corSecundaria: "#FF8A29",
+      // corPrimaria: "#FFEEDF",
+      cor: "#FF8A29",
     },
-  ];
+  ]);
 
   const inicial = [
     {
@@ -220,6 +220,17 @@ function App() {
     console.log("deletando colaborador");
   }
 
+  function mudarCorDoTime(cor, nome) {
+    setTimes(
+      times.map((time) => {
+        if (time.nome === nome) {
+          time.cor = cor;
+        }
+        return time;
+      })
+    );
+  }
+
   return (
     <div>
       <Banner />
@@ -233,6 +244,7 @@ function App() {
         <h1>Minha organização</h1>
         {times.map((time, indice) => (
           <Time
+            mudarCor={mudarCorDoTime}
             key={indice}
             time={time}
             colaboradores={colaboradores.filter(
