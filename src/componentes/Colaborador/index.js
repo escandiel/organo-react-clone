@@ -4,9 +4,11 @@ import { AiFillDelete } from "react-icons/ai";
 const Colaborador = ({ colaborador, corDeFundo, aoDeletar }) => {
   return (
     <div className="colaborador">
-      <AiFillDelete size={30} className="deletar" onClick={aoDeletar}>
-        deletar
-      </AiFillDelete>
+      <AiFillDelete
+        size={30}
+        className="deletar"
+        onClick={() => aoDeletar(colaborador.id)}
+      ></AiFillDelete>
       <div className="cabecalho" style={{ backgroundColor: corDeFundo }}>
         <img src={colaborador.imagem} alt={colaborador.nome} />
       </div>
